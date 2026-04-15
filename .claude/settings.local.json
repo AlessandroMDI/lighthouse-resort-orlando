@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -lh \"c:/Users/rhwoo/Desktop/lighthouse website/\"*.html)"
+    ]
+  }
+}

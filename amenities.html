@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amenities — Lighthouse Key Resort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; max-width: 100%; }
+html, body { overflow-x: hidden; width: 100%; }
+img, video { max-width: 100%; }
+svg { overflow: visible; }
+.nav-logo svg, .nav-symbol-inner svg, .foot-logo-svg svg { max-width: none; }
+:root {
+  --white: #ffffff;
+  --off-white: #F8F6F2;
+  --stone: #EDEBE6;
+  --warm-gray: #C8C4BC;
+  --mid-gray: #8A8680;
+  --dark: #0B111F;
+  --text: #2C2A27;
+  --accent: #497d9c;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav#nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 99999;
+  display: flex; align-items: center;
+  padding: 20px 56px;
+  transition: padding 0.4s, background 0.4s;
+}
+
+nav#nav.solid {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(16px);
+  padding: 20px 56px;
+  border-bottom: 1px solid var(--stone);
+}
+.nav-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400; font-size: 1.05rem;
+  letter-spacing: 0.08em; color: var(--white);
+  text-transform: uppercase; transition: color 0.4s;
+  text-decoration: none; flex: 0 0 auto;
+}
+nav#nav.solid .nav-wordmark { color: var(--dark); }
+.nav-center {
+  display: flex; gap: 32px;
+  flex: 1 1 auto; justify-content: center;
+}
+.nav-center a {
+  font-size: 0.80rem; letter-spacing: 0.22em;
+  text-transform: uppercase; font-weight: 300;
+  color: rgba(255,255,255,0.75); text-decoration: none;
+  transition: color 0.3s; white-space: nowrap; display: inline-block;
+}
+.nav-center a.active { color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.5); padding-bottom: 2px; }
+nav#nav.solid .nav-center a { color: var(--mid-gray); }
+nav#nav.solid .nav-center a.active { color: var(--dark); border-bottom-color: var(--dark); }
+.nav-center a:hover { color: var(--white); }
+nav#nav.solid .nav-center a:hover { color: var(--dark); }
+.nav-text {
+  font-size: 0.80rem; letter-spacing: 0.22em;
+  text-transform: uppercase; font-weight: 300;
+  color: rgba(255,255,255,0.75); white-space: nowrap;
+  cursor: default;
+}
+nav#nav.solid .nav-text { color: var(--mid-gray); }
+.nav-right { flex: 0 0 auto; }
+.nav-right a {
+  font-size: 0.80rem; letter-spacing: 0.22em;
+  text-transform: uppercase; font-weight: 400;
+  color: var(--white); border: 1px solid rgba(255,255,255,0.5);
+  padding: 10px 22px; text-decoration: none;
+  transition: background 0.3s, color 0.3s, border-color 0.3s; display: inline-block;
+}
+nav#nav.solid .nav-right a { color: var(--dark); border-color: var(--warm-gray); }
+.nav-right a:hover { background: var(--white); color: var(--dark); }
+nav#nav.solid .nav-right a:hover { background: var(--dark); color: var(--white); border-color: var(--dark); }
+
+.nav-middle {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.nav-symbol-inner { text-decoration: none; display: flex; align-items: center; }
+.nav-logo { flex: 0 0 auto; text-decoration: none; display: flex; align-items: center; }
+.nav-logo svg { height: 48px; width: auto; display: block; } /* sized inline */
+/* Logo fill: white over hero, accent blue on solid nav */
+.nav-logo svg path, .nav-symbol-inner svg path {
+  fill: #ffffff !important;
+  transition: fill 0.4s;
+}
+nav#nav.solid .nav-logo svg path,
+nav#nav.solid .nav-symbol-inner svg path {
+  fill: #497d9c !important;
+}
+/* Footer logo: off-white */
+.foot-logo-svg svg { height: 44px; width: auto; display: block; opacity: 0.85; }
+.foot-logo-svg svg path { fill: #F8F6F2 !important; }
+.foot-logo-svg svg:hover { opacity: 1; transition: opacity 0.3s; }
+
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  height: 90vh; min-height: 600px;
+  position: relative; z-index: 0;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 56px 72px;
+  overflow: hidden;
+}
+.page-hero-body { position: relative; z-index: 2; pointer-events: auto; }
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background: url('/.netlify/images?url=/images/STARLIGHT_PLAZA.webp&w=2000&q=100') center/cover no-repeat;
+  animation: slowZoom 20s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes slowZoom { from{transform:scale(1)} to{transform:scale(1.05)} }
+.page-hero-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(11,17,31,0.75) 0%, rgba(11,17,31,0.2) 50%, transparent 100%);
+  pointer-events: none;
+}
+.page-hero-body { position: relative; z-index: 2; }
+.page-hero-eyebrow {
+  font-size: 0.93rem; letter-spacing: 0.32em;
+  text-transform: uppercase; color: var(--white);
+  margin-bottom: 20px;
+  opacity: 0; animation: up 0.9s 0.4s forwards;
+}
+.page-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300; font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  color: var(--white); line-height: 1.0;
+  opacity: 0; animation: up 0.8s 0.5s forwards;
+}
+.page-hero-title em { font-style: italic; }
+.page-hero-sub {
+  font-size: 0.9rem; line-height: 1.85;
+  color: var(--white);
+  max-width: 520px; margin-top: 18px;
+  opacity: 0; animation: up 0.8s 0.7s forwards;
+}
+
+/* ─── INTRO TEXT ─── */
+.amenities-intro {
+  padding: 80px 56px;
+  max-width: 860px;
+}
+.amenities-intro p {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300; font-size: clamp(1.1rem, 2vw, 1.45rem);
+  line-height: 1.7; color: var(--text);
+}
+
+/* ─── AMENITY SECTIONS ─── */
+.amenity {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+}
+.amenity.reverse { direction: rtl; }
+.amenity.reverse > * { direction: ltr; }
+.amenity-media { position: relative; overflow: hidden; }
+.amenity-media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.9s ease;
+}
+.amenity-media:hover img { transform: scale(1.04); }
+.amenity-content {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 72px 80px;
+  background: var(--white);
+}
+.amenity.alt .amenity-content { background: var(--off-white); }
+.amenity-num {
+  font-size: 0.80rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--warm-gray); margin-bottom: 20px;
+}
+.amenity-icon {
+  width: 40px; height: 40px; margin-bottom: 24px;
+  color: var(--accent);
+}
+.amenity-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 300; color: var(--dark);
+  line-height: 1.15; margin-bottom: 20px;
+}
+.amenity-name em { font-style: italic; }
+.amenity-rule { width: 28px; height: 1px; background: var(--accent); margin-bottom: 24px; }
+.amenity-desc {
+  font-size: 0.92rem; line-height: 1.95;
+  color: var(--mid-gray); max-width: 380px;
+}
+
+/* ─── FULL BLEED BREAK ─── */
+.fb {
+  height: 50vh; min-height: 360px;
+  position: relative; overflow: hidden;
+}
+.fb img { width:100%; height:100%; object-fit:cover; display:block; }
+.fb-overlay {
+  position: absolute; inset: 0;
+  background: rgba(11,17,31,0.35);
+  display: flex; align-items: center; justify-content: center;
+}
+.fb-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300; font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  color: var(--white); text-align: center;
+  max-width: 680px; line-height: 1.5;
+  padding: 0 40px;
+}
+
+/* ─── CTA SECTION ─── */
+.amenities-cta {
+  background: var(--dark);
+  padding: 100px 56px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.amenities-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300; font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--white); line-height: 1.2; margin-bottom: 16px;
+}
+.amenities-cta h2 em { font-style: italic; }
+.amenities-cta p {
+  font-size: 0.92rem; color: rgba(255,255,255,0.45);
+  line-height: 1.85; max-width: 460px; margin-bottom: 44px;
+}
+.btn-cta {
+  font-size: 0.80rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--dark); background: var(--white);
+  padding: 16px 36px; text-decoration: none;
+  transition: background 0.3s;
+}
+.btn-cta:hover { background: var(--stone); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: #080D18; padding: 48px 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.foot-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 400;
+  letter-spacing: 0.12em; color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+.foot-copy { font-size: 0.80rem; color: rgba(255,255,255,0.2); }
+.foot-nav { display: flex; gap: 32px; }
+.foot-nav a {
+  font-size: 0.80rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.3s;
+}
+.foot-nav a:hover { color: var(--white); }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.d1 { transition-delay: 0.15s; }
+.d2 { transition-delay: 0.25s; }
+
+@keyframes up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+/* ─── HAMBURGER & MOBILE MENU ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 999999;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 22px;
+  border-radius: 2px;
+  background: var(--white);
+  transition: background 0.4s, opacity 0.3s, transform 0.3s;
+  transform-origin: center;
+  flex-shrink: 0;
+}
+nav#nav.solid .hamburger span { background: var(--dark); }
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* Full-screen overlay */
+.mob-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: var(--off-white);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.mob-menu.open {
+  display: flex;
+  opacity: 0;
+}
+.mob-menu.visible {
+  opacity: 1;
+}
+.mob-menu-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+.mob-menu-links a {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 7vw, 3rem);
+  color: var(--dark);
+  text-decoration: none;
+  padding: 18px 40px;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--stone);
+  width: 100%;
+  text-align: center;
+  transition: color 0.2s;
+}
+.mob-menu-links a:first-child { border-top: 1px solid var(--stone); }
+.mob-menu-links a:hover { color: var(--accent); }
+.mob-menu-enquire {
+  margin-top: 40px;
+  font-size: 0.80rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--white);
+  background: var(--dark);
+  border: 1px solid var(--dark);
+  padding: 14px 36px;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s;
+  display: inline-block;
+}
+.mob-menu-enquire:hover { background: var(--accent); border-color: var(--accent); }
+.mob-menu-close {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.mob-menu-close::before,
+.mob-menu-close::after {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 1.5px;
+  background: var(--dark);
+  left: 50%;
+  top: 50%;
+}
+.mob-menu-close::before { transform: translate(-50%, -50%) rotate(45deg); }
+.mob-menu-close::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+/* Overlay backdrop click zone */
+.mob-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ─── MOBILE ─── */
+@media(max-width:900px){
+  nav { padding: 20px 24px; }
+  nav.solid { padding: 16px 24px; }
+  .nav-center { display: none; }
+  .page-hero {
+    height: 100svh;
+    min-height: 0;
+    padding: 80px 24px 72px;
+    justify-content: flex-end;
+  }
+  .page-hero-title { font-size: clamp(2.4rem, 10vw, 3.6rem); }
+  .page-hero-sub { font-size: 0.84rem; margin-top: 14px; max-width: 100%; }
+  .page-hero-eyebrow { font-size: 0.80rem; margin-bottom: 14px; }
+  .amenities-intro { padding: 56px 24px; }
+  .amenity { grid-template-columns: 1fr; min-height: auto; }
+  .amenity.reverse { direction: ltr; }
+  .amenity-media { height: 280px; }
+  .amenity-content { padding: 48px 24px; }
+  .amenities-cta { padding: 80px 24px; }
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
+  .foot-nav { justify-content: center; flex-wrap: nowrap; gap: 20px; }
+  .foot-logo-svg { display: flex; justify-content: center; }
+
+  /* Logo scaling on mobile */
+  .nav-right { display: none; }
+  .hamburger { display: flex; }
+  .nav-logo svg { height: 32px !important; }
+  .nav-symbol-inner { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <svg style="height:48px;width:auto;display:block;" id="logo-wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.23 105.91">
+  
+  <path fill="#497d9c" d="M1.63,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h21.89v1.01l-4.25.86c-3.02.65-3.74,1.22-3.74,7.42v28.95c0,6.77,1.01,7.42,3.96,7.42h4.54c7.42,0,9.79-1.01,10.94-4.1l1.73-4.75,1.51.29-2.3,11.52H1.63v-1.01h0Z"/>
+  <path fill="#497d9c" d="M43.03,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v30.03c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01Z"/>
+  <path fill="#497d9c" d="M68.45,24.99c0-15.55,11.02-25.56,27.72-25.56,5.54,0,11.02.65,16.2,2.3v10.37h-1.37l-.86-3.46c-.86-3.6-5.69-6.19-14.04-6.19-13.18,0-19.15,9.14-19.15,21.39,0,12.96,4.82,23.69,19.3,23.69,2.09,0,4.25-.22,6.34-.72,2.52-.58,3.1-1.8,3.1-5.76v-3.02c0-6.19-1.08-6.84-4.1-7.42l-4.61-.86v-1.01h22.61v1.01l-3.24.86c-2.95.79-3.46,1.22-3.38,7.42l.07,9.58c-4.82,1.44-11.59,2.81-17.5,2.81-16.2,0-27.07-8.5-27.07-25.42h-.02Z"/>
+  <path fill="#497d9c" d="M123.02,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v11.95h25.56v-11.95c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v30.03c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42v-14.98h-25.56v14.98c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01Z"/>
+  <path fill="#497d9c" d="M189.84,48.39l3.89-.86c2.95-.65,3.38-1.22,3.38-7.42V3.75h-5.11c-8.06,0-9.79,1.37-10.37,4.1l-.86,4.32h-1.22V.79h42.48v11.38h-1.22l-.86-4.32c-.58-2.74-2.3-4.1-10.37-4.1h-5.11v36.36c0,6.19.43,6.77,3.38,7.42l3.89.86v1.01h-21.89v-1.01h-.01Z"/>
+  <path fill="#497d9c" d="M225.19,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v11.95h25.56v-11.95c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v30.03c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42v-14.98h-25.56v14.98c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01Z"/>
+  <path fill="#497d9c" d="M283.22,25.2c0-15.99,12.6-25.78,25.06-25.78,13.39,0,25.13,7.92,25.13,25.78,0,14.69-11.52,25.35-25.13,25.35-14.69,0-25.06-8.64-25.06-25.35ZM324.98,25.2c0-16.56-8.5-22.97-16.78-22.97-7.78,0-16.63,6.05-16.63,22.97s8.21,22.47,16.71,22.47,16.71-6.12,16.71-22.47h-.01Z"/>
+  <path fill="#497d9c" d="M343.7,29.6V10.09c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.8h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v17.79c0,8.93,2.95,18.79,14.04,18.79,11.88,0,13.75-10.95,13.75-20.52v-5.98c0-15.41-.65-16.63-3.74-17.43l-3.53-.94V.79h17.71v1.01l-3.17.86c-2.81.79-3.31,2.23-3.31,13.83v9.94c0,12.6-3.89,24.12-19.66,24.12-13.03,0-19.44-8.57-19.44-20.95h0Z"/>
+  <path fill="#497d9c" d="M395.25,48.1l-1.66-10.23,1.3-.36,1.66,3.89c1.37,3.17,4.75,5.98,10.87,5.98,5.62,0,10.87-3.1,10.87-9.36,0-4.97-4.03-7.78-7.92-9.58l-4.75-2.23c-5.26-2.45-10.22-6.41-10.22-12.89,0-8.42,7.56-13.54,15.48-13.54,1.87,0,6.91.22,11.3,2.3v10.3h-1.3l-.94-3.82c-.65-2.74-3.38-5.76-9.65-5.76-4.75,0-9.15,2.88-9.15,7.92,0,4.25,4.03,6.91,8.21,8.86l4.68,2.16c5.18,2.38,10.44,6.19,10.44,13.18,0,10.37-8.78,15.63-17.71,15.63-3.67,0-8.35-.94-11.52-2.45h.01Z"/>
+  <path fill="#497d9c" d="M430.46,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h33.99v9.58h-1.15l-.86-3.24c-.72-2.66-2.3-3.38-10.37-3.38h-7.71v18.51h7.63c6.62,0,7.63-.22,8.35-2.74l.79-2.66h1.08v14.11h-1.08l-.86-3.02c-.72-2.52-1.66-2.74-8.28-2.74h-7.63v13.83c0,6.77,1.01,7.42,3.96,7.42h5.54c7.42,0,9.5-1.15,10.95-4.1l1.58-3.31,1.22.29-2.16,10.08h-35v-1.03Z"/>
+  <g>
+    <path fill="#497d9c" d="M101.62,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h12.82v.63l-1.99.54c-1.85.5-2.12.77-2.12,4.65v18.82c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63ZM111.1,90l6.64-7.54c3.88-4.42,3.52-5.55,1.4-6.09l-1.76-.45v-.63h11.06v.63l-1.99.54c-.95.27-2.71,2.3-5.37,5.33l-5.82,6.59,8.44,10.88c2.48,3.16,4.29,5.01,5.24,5.33l1.62.54v.63l-7.72.04-11.74-15.8Z"/>
+    <path fill="#497d9c" d="M132.13,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h21.31v6h-.72l-.54-2.03c-.45-1.67-1.45-2.12-6.5-2.12h-4.83v11.6h4.78c4.15,0,4.79-.13,5.24-1.71l.5-1.67h.68v8.85h-.68l-.54-1.9c-.45-1.58-1.04-1.71-5.19-1.71h-4.78v8.67c0,4.24.63,4.65,2.48,4.65h3.48c4.65,0,5.96-.72,6.86-2.57l.99-2.08.77.18-1.36,6.32h-21.94v-.65Z"/>
+    <path fill="#497d9c" d="M165.31,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-5.69c0-1.81-.09-2.12-.95-3.52l-5.96-9.62c-2.35-3.84-2.93-4.29-4.15-4.74l-1.26-.45v-.63h13.36v.63l-2.35.54c-1.94.45-2.53,1.26-.45,4.65l5.19,8.58,3.57-6.41c2.84-5.15,3.21-6.37,1.22-6.82l-2.3-.54v-.63h10.52v.63l-1.26.45c-1.76.63-2.26,1.49-4.78,5.73l-4.92,8.17c-.81,1.31-.86,1.9-.86,3.43v6.23c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63h-.02Z"/>
+    <path fill="#497d9c" d="M208.47,89.95h1.4c3.84,0,7.58-1.49,7.58-6.41,0-5.37-3.2-6.68-7.72-6.68h-2.08v23.07c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h12.46c5.19,0,11.06.95,11.06,7.45,0,4.42-3.97,6.91-8.08,7.86,2.39,2.98,5.28,6.64,7.63,9.34,2.57,2.98,3.75,4.29,4.97,4.69l1.49.5v.63l-7.54.04c-2.84-3.66-9.66-12.01-12.46-15.84h0Z"/>
+    <path fill="#497d9c" d="M230.04,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h21.31v6h-.72l-.54-2.03c-.45-1.67-1.45-2.12-6.5-2.12h-4.83v11.6h4.78c4.15,0,4.79-.13,5.24-1.71l.5-1.67h.68v8.85h-.68l-.54-1.9c-.45-1.58-1.04-1.71-5.19-1.71h-4.78v8.67c0,4.24.63,4.65,2.48,4.65h3.48c4.65,0,5.96-.72,6.86-2.57l.99-2.08.77.18-1.36,6.32h-21.94v-.65Z"/>
+    <path fill="#497d9c" d="M258.44,104.94l-1.04-6.41.81-.23,1.04,2.44c.86,1.99,2.98,3.75,6.82,3.75,3.52,0,6.82-1.94,6.82-5.87,0-3.11-2.53-4.88-4.97-6l-2.98-1.4c-3.3-1.53-6.41-4.02-6.41-8.08,0-5.28,4.74-8.49,9.71-8.49,1.17,0,4.33.14,7.09,1.45v6.46h-.81l-.59-2.39c-.41-1.72-2.12-3.61-6.05-3.61-2.98,0-5.73,1.81-5.73,4.97,0,2.66,2.53,4.33,5.15,5.55l2.93,1.35c3.25,1.49,6.55,3.88,6.55,8.26,0,6.5-5.51,9.8-11.11,9.8-2.3,0-5.24-.59-7.22-1.53v-.02Z"/>
+    <path fill="#497d9c" d="M280.92,90.58c0-10.02,7.9-16.16,15.71-16.16,8.4,0,15.76,4.97,15.76,16.16,0,9.21-7.22,15.89-15.76,15.89-9.21,0-15.71-5.42-15.71-15.89h0ZM307.1,90.58c0-10.38-5.33-14.4-10.52-14.4-4.88,0-10.43,3.79-10.43,14.4s5.15,14.08,10.47,14.08,10.47-3.84,10.47-14.08h.01Z"/>
+    <path fill="#497d9c" d="M324.84,89.95h1.4c3.84,0,7.58-1.49,7.58-6.41,0-5.37-3.2-6.68-7.72-6.68h-2.08v23.07c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h12.46c5.19,0,11.06.95,11.06,7.45,0,4.42-3.97,6.91-8.08,7.86,2.39,2.98,5.28,6.64,7.63,9.34,2.57,2.98,3.75,4.29,4.97,4.69l1.49.5v.63l-7.54.04c-2.84-3.66-9.66-12.01-12.46-15.84h0Z"/>
+    <path fill="#497d9c" d="M349.84,105.12l2.44-.54c1.85-.41,2.12-.77,2.12-4.65v-22.8h-3.21c-5.06,0-6.14.86-6.5,2.57l-.54,2.71h-.77v-7.13h26.63v7.13h-.77l-.54-2.71c-.36-1.72-1.44-2.57-6.5-2.57h-3.2v22.8c0,3.88.27,4.24,2.12,4.65l2.44.54v.63h-13.72v-.63Z"/>
+    <path fill="#497d9c" d="M1.63,90.4l91.71-3.01c1.52.18,2.68,1.49,2.68,3.03s-1.16,2.84-2.68,3.03c-30.57-1.02-61.14-2.03-91.71-3.05h0Z"/>
+    <path fill="#497d9c" d="M467.61,90.45l-91.71,3.01c-1.52-.18-2.68-1.49-2.68-3.03s1.16-2.84,2.68-3.03c30.57,1.02,61.14,2.03,91.71,3.05Z"/>
+  </g>
+</svg>
+  </a>
+  <div class="nav-middle">
+    <a href="index.html" class="nav-symbol-inner">
+      <svg style="height:64px;width:auto;display:block;" id="logo-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 435.05 499.16">
+  
+  <g>
+    <path fill="#497d9c" d="M200.51,414.1c-37.06,21.77-68.06,37.65-110.19,35.63-16.55-.8-32.09-4.14-47.17-12.59-15.84-8.88-29.88-21.09-41.81-36.68,8.84,6.59,17.53,12.03,27.59,15.74,36.8,13.58,74.02,9.68,110.17-5.81,16.75-7.18,32.15-16.07,47.88-26.35,46.3-30.24,87.9-55.75,141.56-50.49,34.18,3.35,70.05,20.19,96.05,50.12-11.4-8.65-23.62-15.6-37.12-20.27-38.85-13.44-85.36-4.87-122.39,13.81l-12.45,6.28-52.12,30.61Z"/>
+    <path fill="#497d9c" d="M239.75,493.44c-30.21,7.88-71.77,6.48-101.63-2.7,1.52-.58,3.34-.29,5.22-.19,30.78,1.68,66.65-8.04,94.36-25.04l34.62-21.24c9.96-6.11,19.39-11.97,29.65-17.32,43.31-22.54,92.27-27.01,132.13,7.95l-10.31-3.88c-33.18-11.59-68.45.78-98.53,19.54l-31.29,19.51c-17.26,10.76-34.91,18.33-54.23,23.36h.01Z"/>
+    <path fill="#497d9c" d="M132.52,397.75c-24.98,10.45-46.24,13.08-71.33,11.36-21.41-2.46-43.72-9.17-60.78-26.78,19.88-6.23,63.63-16.55,108.52,2.49,8.93,3.79,16.77,8.26,23.6,12.93h-.01Z"/>
+    <path fill="#497d9c" d="M361.19,462.15c-12.93,7.66-20.61,13.03-33.62,17.37-8.1,2.7-16.68,4.47-26.63,5.47,15.85-10.59,28.45-18.3,37.17-23.45,3.82-2.26,8.33-4.87,14.43-7.83,7-3.4,14.36-7.04,24.28-9.52,9.6-2.4,17.85-2.95,23.5-3.02-16.8,8.14-30.01,15.58-39.13,20.99h0Z"/>
+    <path fill="#497d9c" d="M244.52,443.99c-30.78,19.05-62.82,34.92-97.52,36.82-34.14,1.86-65.52-6.32-94.62-28.31l8.71,3.72c25.85,8.67,50.03,9.08,76.34,2.56,18.42-4.57,35.75-10.96,52.67-21.18l44.18-26.67c11.21-6.77,21.76-13.06,33.39-18.76,33.18-16.27,69.34-25.72,104.86-17.04,23.24,5.68,44.53,18.66,62.12,38.46-1.64-.51-3.27-1.28-4.79-2.28-34.04-22.39-75.78-21.85-111.86-7.77-13.11,5.11-25.38,10.71-37.64,18.3l-35.82,22.17-.02-.02Z"/>
+  </g>
+  <path fill="#497d9c" d="M146.51,391.38c-10.43-8.57-30.32-22.51-58.88-29.18-40.42-9.43-73.47,1.49-86.28,6.5,16.11-8.43,54.33-25.42,101.02-17.24,14.92,2.61,27.57,7.24,37.69,12.05,11.71-78.97,23.42-157.94,35.13-236.92-1.11-.21-3.05-.75-4.87-2.3-.99-.84-2.86-2.44-3.13-5.09-.23-2.25.82-3.99,1.24-4.61l.18-16.58c.67-.69,1.74-1.62,3.26-2.37,1.99-.98,3.81-1.19,4.88-1.22.06-.82.13-1.65.19-2.47l.09-29.12-4.42-1.89c-.88-.38-.79-3.58.12-3.97l4.15-1.8c5.03-15.27,16.27-22.06,31.7-25.58,1.56-10.76,4.61-29.12,7.58-29,2.89.11,4.53,17.62,5.3,28.54l9.22,3.05c10.95,3.62,19.26,12.01,23.13,22.73l4.26,2c.89.42,1.24,3.8.33,4.21l-4.36,2,.69,30.8c.97-.04,2.85.03,4.87,1.03,1.29.64,2.19,1.44,2.77,2.04.12,5.54.23,11.08.35,16.62.51.64,1.48,2.06,1.65,4.05.31,3.63-2.29,6.12-2.84,6.65-1.97,1.88-4.27,2.37-4.91,2.49-.26.05-.48.08-.67.11-.37.04-.63.06-.64.06-.42.07,8.74,60.42,29.62,194.41-7.16,1.56-17.93,4.23-30.62,8.77-6.59,2.36-25.17,9.32-67.07,34.93-10.37,6.33-24.38,15.17-40.74,26.32v-.02ZM241.9,54.84c-11.43-2.18-25.91-3.48-42.31-1.38-4.55.58-8.84,1.37-12.85,2.29,18.39-.3,36.77-.61,55.16-.91h0ZM225.61,90.87l-.28-26.02c-.06-5.96-19.18-5.65-19.12,1.33l.22,24.64,19.18.05ZM200.14,91.38l-.24-25.47c-.51-.73-1.06-1.28-1.61-1.71-5.24-4.12-14.08.04-15.02.5.04,5.03.08,10.07.13,15.1l.23,13.53,16.51-1.95h0ZM247.87,93.42l-.4-30.42c-1.45-.56-6.51-2.31-11.73-.03-1.66.72-2.93,1.68-3.86,2.54.07,8.56.13,17.12.2,25.67l15.8,2.24h-.01ZM254.32,114.08v-7.72c-10.66-2.05-23.77-3.71-38.78-3.78-14.98-.07-28.08,1.48-38.73,3.42l-.05,7.35c11.26-1.48,24.3-2.49,38.78-2.35,14.51.14,27.54,1.39,38.78,3.08ZM205.73,223.74c-6.33,4.64-12.66,9.29-18.99,13.93l31.35-15.42,39.7-17.42-3.12-22.66-6.81-55.22c-3.99-.97-8.57-1.83-13.67-2.33-7.29-.72-13.78-.54-19.14-.03-3.65,3.62-7.31,7.25-10.96,10.87l17.75-8.43c-.52.68-1.83,2.17-2.47,2.59l-15.52,10.01,10.49-4.06,9.94-3.6c-4.65,3.07-9.31,6.13-13.96,9.2-3.85,2.58-7.71,5.16-11.56,7.75l18.11-5.91-14.75,9.21-14.29,8.85,24.58-10.65-21.43,13.79c-2.17,1.39-4.13,2.94-6.25,4.57,3.12-1.45,6.28-2.94,9.46-4.48,3.34-1.61,6.62-3.23,9.85-4.84-2.37,1.58-4.75,3.17-7.12,4.75l-10.65,7.25-5.39,3.67,12.91-4.85-14.17,8.34c4.39-1.66,8.78-3.32,13.18-4.97-4.14,3.19-8.29,6.39-12.43,9.58l9.38-4.16-9.97,6.98,10.2-3.62c-1.52,1.23-3.28,2.56-5.03,3.67l-6.1,3.89c2.63-.68,5.21-1.46,7.2-2.43l6.81-3.32-15.3,11.34c0,.06.02.14.07.21.42.56,2.67-.41,7.69-2.97,1.44-.73,3.37-1.73,5.64-2.94l-10.59,8.68c-1.06.87-2.29,2.25-2.72,3.14,2.24-1.42,4.02-2.66,6.16-3.83l10.71-5.83-17.95,13.86c5.79-2.14,13.29-6.53,18.26-9.58-1.85,1.75-3.92,3.75-5.97,5.44l-12.1,10,12.68-7.05,6.38-3.55-9.5,7.19-10.52,8.48c1.76-1.04,3.53-2.08,5.3-3.12,7.31-4.28,14.6-8.48,21.87-12.6l-8.21,5.63c-5.87,4.03-11.5,7.53-16.01,13,5.39-3.19,10.79-6.38,16.18-9.57l-5.97,3.99-10.94,9.46,8.03-4.29,7.91-4.15-14.28,10.61c7.62-2.23,13.82-9.28,19.99-10.89l-15.09,10.88-10.7,7.99,21.02-10.86c3.37-1.74,6.75-3.27,9.92-4.63l-18.49,13.22-8.56,4.96,7.26-2.36c-7.02,4.45-10.48,6.75-10.38,6.92.1.16,3.68-1.77,10.75-5.8,6.79-3.82,13.58-7.65,20.37-11.47h-.04ZM181.53,275.38c2.56-1.52,5.11-3.05,7.67-4.57-7.17,5.93-14.33,11.85-21.5,17.78,3.23-1.73,6.48-3.47,9.74-5.24,3.67-2,7.31-3.99,10.92-5.99-3.62,2.71-7.24,5.42-10.87,8.13,4.49-2.31,8.98-4.63,13.46-6.94-4.36,2.51-8.9,5.29-13.55,8.35-4.16,2.74-8.06,5.48-11.72,8.18,4.34-2,8.68-4.01,13.03-6.01l-7.24,4.45,7.63-2.56-12.38,8.65,6.44-3.35c3.12-1.63,6.32-3.13,9.6-4.4-6.2,4.13-12.61,6.71-16.97,12.96,5.92-3.56,11.84-7.12,17.77-10.67-2.57,2.11-5.49,4.26-8.78,6.32-1.12.7-2.22,1.36-3.31,1.97l5.25-1.53-10.01,7.55,15.55-7.26-11.63,8.49-5.05,3.83,4.66-2.18c7.26-3.4,13.76-6.97,20.65-11.11l-19.95,14.25,8.22-4.01,14.72-6.86c-4.42,2.66-8.85,5.32-13.27,7.98-5.31,3.3-10.61,6.6-15.92,9.9l7.65-3.31,11.97-4.99c-2.56,2.32-5.26,4.68-8.1,7.06-2.92,2.44-5.8,4.74-8.61,6.9l12.06-6.57,11.3-6.45c-7.64,6.34-15.28,12.69-22.92,19.03-2.33,1.76-4.38,3.45-6.21,5.57,10.65-6.84,21.3-13.69,31.95-20.53-7.69,5.87-15.39,11.73-23.08,17.6l7.45-4.78,9.88-6,11.84-6.99c-7.64,5.59-15.29,11.18-22.93,16.77l-14.19,10.94c-1.31,1.03-2.62,2.07-3.93,3.1l13.11-7.93,9.94-5.87c-1.74,1.55-3.48,3.09-5.23,4.64l-5.77,4.18c1.88-.7,4.49-1.82,5.99-2.83l5.48-3.68c2.8-1.88,5.3-3.55,7.94-4.97l-9.89,8.05-17.58,13.16c12.13-6.01,25.1-16.02,38.08-22.87-9.83,9.35-20.84,13.97-30.11,21.91l37.99-21.6c-14.35,9.52-28.7,19.05-43.05,28.57l10.37-5.56,9.85-5.32,46.44-23.07,39.71-20.92-3.15-23.87-3.56-23.33-7.52-51.06c-5.51,2.65-9.51,4.81-14.19,7.5l-22.18,12.75-17.78,10.85c5.84-2.41,11.05-4.98,17.11-6.7-4.78,2.8-9.51,4.98-13.97,8.24l-13.05,9.53,17.11-8.62-9.61,7.47c-5.18,4.03-11.05,6.62-15.6,11.07l10.06-5.55c7.39-4.08,11.98-8.47,17.97-10.87l-11.7,9.05c-4.35,3.36-8.91,6.34-13.55,9.3-3.87,2.46-7.62,4.16-10.76,7.82l26.43-13.91-8.09,5.78c-12.4,8.87-12.06,10.87-25.78,19.35,6.03-3.67,12.07-7.34,18.1-11.01,1.71-1.22,3.61-2.4,5.19-3.36-4.01,3.4-8.03,6.81-12.04,10.21h0ZM182.79,260.93q.65-.65,0,0t0,0ZM174.79,271.92q.65-.65,0,0-.65.65,0,0ZM164.79,328.86q.65-.65,0,0-.65.65,0,0ZM161.79,330.86q.65-.65,0,0-.65.65,0,0ZM160.79,354.84q.65-.65,0,0-.65.65,0,0Z"/>
+  <path fill="#497d9c" d="M225.89,282.67l-10.98.05-.17-26.98c-.01-1.77,3.01-4.51,4.67-4.59,1.85-.09,5.76,2.49,5.81,4.5l.67,27.01h0Z"/>
+  <path fill="#497d9c" d="M198.79,263.93q-.65.65,0,0t0,0Z"/>
+  <path fill="#497d9c" d="M224.49,188.59l-11.03-.15-.06-23.53c0-2.36,2.03-5.23,4.02-5.91,1.82-.62,6.14,1.73,6.22,4.02l.85,25.58h0Z"/>
+  <path fill="#497d9c" d="M273.3,67.72c16.4-6.87,32.81-13.74,49.21-20.6.1-.32.38-1.37,0-2.57-.52-1.62-1.84-2.21-2.05-2.3-16.22,7.07-32.44,14.13-48.66,21.2-.02.5.02,1.4.39,2.4.33.9.8,1.52,1.11,1.86h0Z"/>
+  <path fill="#497d9c" d="M278.82,83.19c18.73.82,37.46,1.64,56.19,2.46.22-.25.88-1.09.94-2.37.08-1.72-1.01-2.84-1.18-3.01-18.62-.56-37.25-1.11-55.87-1.67-.2.46-.5,1.3-.5,2.38,0,.98.23,1.75.41,2.2h0Z"/>
+  <path fill="#497d9c" d="M272.97,97.15c14.09,8.04,28.18,16.07,42.27,24.11.26-.15,1.09-.65,1.61-1.78.7-1.53.28-2.97.22-3.19-14.1-7.75-28.21-15.51-42.31-23.26-.32.34-.87.98-1.27,1.97-.37.89-.47,1.68-.5,2.16h-.02Z"/>
+  <path fill="#497d9c" d="M156.17,68.09c-16.4-6.87-32.81-13.74-49.21-20.6-.1-.32-.38-1.37,0-2.57.52-1.62,1.84-2.21,2.05-2.3,16.22,7.07,32.44,14.13,48.66,21.2.02.5-.02,1.4-.39,2.4-.33.9-.8,1.52-1.11,1.86h0Z"/>
+  <path fill="#497d9c" d="M150.66,83.56c-18.73.82-37.46,1.64-56.19,2.46-.22-.25-.88-1.09-.94-2.37-.08-1.72,1.01-2.84,1.18-3.01,18.62-.56,37.25-1.11,55.87-1.67.2.46.5,1.3.5,2.38,0,.98-.23,1.75-.41,2.2h0Z"/>
+  <path fill="#497d9c" d="M156.5,97.52c-14.09,8.04-28.18,16.07-42.27,24.11-.26-.15-1.09-.65-1.61-1.78-.7-1.53-.28-2.97-.22-3.19,14.1-7.75,28.21-15.51,42.31-23.26.32.34.87.98,1.27,1.97.37.89.47,1.68.5,2.16h.02Z"/>
+</svg>
+    </a>
+    <div class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="residences.html">Residences</a>
+    <a href="amenities.html" class="active">Amenities</a>
+    <a href="location.html">Location</a>
+    <a href="index.html#gallery">Gallery</a>
+  </div>
+    </div><!-- /nav-middle -->
+  <div class="nav-right">
+    <a href="index.html#contact">Enquire Now</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="mob-menu" id="mob-menu" role="dialog" aria-modal="true">
+  <button class="mob-menu-close" id="mob-close" aria-label="Close menu"></button>
+  <div class="mob-menu-backdrop" id="mob-backdrop"></div>
+  <nav class="mob-menu-links">
+    <a href="index.html">Home</a>
+    <a href="residences.html">Residences</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="location.html">Location</a>
+    <a href="index.html#gallery">Gallery</a>
+  </nav>
+  <a href="index.html#contact" class="mob-menu-enquire">Enquire Now</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-scrim"></div>
+  <div class="page-hero-body">
+    <p class="page-hero-eyebrow">Lighthouse Key Resort &nbsp;·&nbsp; Orlando, Florida</p>
+    <h1 class="page-hero-title"><em>Amenities</em></h1>
+    <p class="page-hero-sub">Resort-grade facilities designed to make every stay <span style="white-space:nowrap">unforgettable&thinsp;—&thinsp;and</span> every owner's returns consistent.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="amenities-intro reveal">
+  <p>At Lighthouse Key, the amenities aren't an <span style="white-space:nowrap">afterthought&thinsp;—&thinsp;they're</span> the reason guests choose this property over every other option on the market. From a resort-style pool complex to a pizza restaurant steps from the door, every facility has been selected to maximise both guest satisfaction and owner occupancy rates.</p>
+</div>
+
+<!-- AMENITY 1: POOL -->
+<div class="amenity reverse reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_POOL_BIG_01.jpg&w=900&q=100" alt="Resort Pool">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">01 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M4 30 Q10 24 16 30 Q22 36 28 30 Q34 24 40 30"/>
+      <ellipse cx="20" cy="18" rx="10" ry="7"/>
+    </svg>
+    <h2 class="amenity-name">Resort <em>Pool</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">A lagoon-style centrepiece that anchors the resort. Generous depths, sun shelf entries, and private cabanas positioned for both shade and spectacle. The pool is where guests linger <span style="white-space:nowrap">longest&thinsp;—&thinsp;and</span> where five-star reviews are written.</p>
+  </div>
+</div>
+
+<!-- AMENITY 2: LAZY RIVER -->
+<div class="amenity alt reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_LAZY_RIVER_03_AI.jpg&w=900&q=100" alt="Lazy River">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">02 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M4 20 Q10 12 20 20 Q30 28 36 20"/>
+      <path d="M4 26 Q10 18 20 26 Q30 34 36 26"/>
+    </svg>
+    <h2 class="amenity-name">Lazy <em>River</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">A winding current that loops through lush tropical landscaping. Guests drift at their own pace past palms and water features. It's the amenity families book <span style="white-space:nowrap">around&thinsp;—&thinsp;and</span> the detail that turns a one-time stay into an annual tradition.</p>
+  </div>
+</div>
+
+<!-- AMENITY 3: SPLASH PAD -->
+<div class="amenity reverse reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_SPLASH_PAD_02.jpg&w=900&q=100" alt="Splash Pad">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">03 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <circle cx="20" cy="20" r="4"/>
+      <path d="M20 4 L20 10 M20 30 L20 36 M4 20 L10 20 M30 20 L36 20"/>
+      <path d="M8 8 L13 13 M27 27 L32 32 M32 8 L27 13 M13 27 L8 32"/>
+    </svg>
+    <h2 class="amenity-name">Splash <em>Pad</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">A dedicated water play zone built for the youngest guests. Ground jets, tipping buckets, and spray features on a safe, non-slip surface. Parents relax nearby while children play <span style="white-space:nowrap">freely&thinsp;—&thinsp;a</span> dynamic that drives longer stays and stronger reviews.</p>
+  </div>
+</div>
+
+<!-- AMENITY 4: THE EXISTING RESORT -->
+<div class="amenity reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_EXST_BUILDING_03.jpg&w=900&q=100" alt="The Existing Resort">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">04 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <rect x="8" y="14" width="24" height="20" rx="1"/>
+      <path d="M14 34 L14 24 L20 24 L20 34"/>
+      <path d="M8 14 L20 4 L32 14"/>
+      <line x1="24" y1="22" x2="28" y2="22"/>
+      <line x1="24" y1="27" x2="28" y2="27"/>
+    </svg>
+    <h2 class="amenity-name">The Existing <em>Resort</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">Lighthouse Key is a hybrid development — part strategic remodel of an established resort property, part new construction. The existing resort is being brought fully up to premium standard, while several new buildings are being added to the site, expanding the resort's footprint and unit count. For investors, this approach offers the best of both: the infrastructure and cost advantages of an existing property, combined with the yield potential of a purpose-designed new development.</p>
+  </div>
+</div>
+
+<!-- AMENITY 5: PIZZA RESTAURANT -->
+<div class="amenity reverse alt reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/PIZZA.webp&w=900&q=100" alt="Pizza Restaurant">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">05 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M20 4 L36 34 H4 Z"/>
+      <circle cx="20" cy="22" r="2"/>
+      <circle cx="14" cy="26" r="1.5"/>
+      <circle cx="26" cy="26" r="1.5"/>
+    </svg>
+    <h2 class="amenity-name">Pizza <em>Restaurant</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">An on-site pizzeria that solves the question every family asks on night one: where do we eat? Wood-fired pies, casual atmosphere, and poolside delivery options. It's a convenience guests value <span style="white-space:nowrap">immediately&thinsp;—&thinsp;and</span> mention in every review they leave.</p>
+  </div>
+</div>
+
+<!-- AMENITY 6: PICKLEBALL -->
+<div class="amenity reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_PICKLE_BALL_02.jpg&w=900&q=100" alt="Pickleball Courts">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">06 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <rect x="4" y="10" width="32" height="22" rx="1"/>
+      <line x1="20" y1="10" x2="20" y2="32"/>
+      <line x1="4" y1="21" x2="36" y2="21"/>
+      <circle cx="30" cy="15" r="2.5"/>
+    </svg>
+    <h2 class="amenity-name">Pickleball <em>Courts</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">Two regulation courts set beneath shade structures with quality court surfacing. Pickleball is the fastest-growing sport in <span style="white-space:nowrap">America&thinsp;—&thinsp;and</span> an increasingly common reason guests specifically seek out resort properties. Equipment provided on request.</p>
+  </div>
+</div>
+
+<!-- AMENITY 7: ROOFTOP TERRACES -->
+<div class="amenity reverse alt reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_ROOF_BAR_01.jpg&w=900&q=100" alt="Rooftop Terraces">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">07 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M6 28 L20 12 L34 28"/>
+      <line x1="10" y1="28" x2="30" y2="28"/>
+      <line x1="6" y1="32" x2="34" y2="32"/>
+      <line x1="17" y1="28" x2="17" y2="22"/>
+      <line x1="23" y1="28" x2="23" y2="22"/>
+    </svg>
+    <h2 class="amenity-name">Rooftop <em>Terraces</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">An elevated bar and lounge experience set above the resort, with open sky and views across the Orlando horizon. Signature cocktails, curated spirits, and the kind of atmosphere that turns a holiday into a memory. For investors, a rooftop bar is a revenue line in its own right — and the detail that consistently elevates a property from well-reviewed to genuinely sought-after.</p>
+  </div>
+</div>
+
+<!-- AMENITY 8: GYM -->
+<div class="amenity reveal">
+  <div class="amenity-media">
+    <img src="/.netlify/images?url=/images/AMEN_GYM_01.webp&w=900&q=100" alt="Gym">
+  </div>
+  <div class="amenity-content">
+    <p class="amenity-num">08 &nbsp;/&nbsp; 08</p>
+    <svg class="amenity-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2">
+      <rect x="2" y="18" width="6" height="6" rx="1"/>
+      <rect x="32" y="18" width="6" height="6" rx="1"/>
+      <rect x="8" y="15" width="6" height="12" rx="1"/>
+      <rect x="26" y="15" width="6" height="12" rx="1"/>
+      <line x1="14" y1="21" x2="26" y2="21"/>
+    </svg>
+    <h2 class="amenity-name">Fitness <em>Centre</em></h2>
+    <div class="amenity-rule"></div>
+    <p class="amenity-desc">A well-equipped fitness studio with cardio machines, free weights, and dedicated stretching space. For longer-stay guests and working <span style="white-space:nowrap">professionals&thinsp;—&thinsp;an</span> increasingly large segment of the Orlando STR <span style="white-space:nowrap">market&thinsp;—&thinsp;a</span> quality gym is no longer optional. It's expected.</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="amenities-cta reveal">
+  <h2>Experience It <em>For Yourself</em></h2>
+  <p>Speak with our investment team for a full walkthrough of the resort facilities, unit configurations, and the financial opportunity behind Lighthouse Key.</p>
+  <a href="index.html#contact" class="btn-cta">Enquire Now</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo-svg">
+    <svg style="height:48px;width:auto;display:block;" id="logo-wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 469.23 105.91">
+  
+  <path fill="#497d9c" d="M1.63,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h21.89v1.01l-4.25.86c-3.02.65-3.74,1.22-3.74,7.42v28.95c0,6.77,1.01,7.42,3.96,7.42h4.54c7.42,0,9.79-1.01,10.94-4.1l1.73-4.75,1.51.29-2.3,11.52H1.63v-1.01h0Z"/>
+  <path fill="#497d9c" d="M43.03,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v30.03c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01Z"/>
+  <path fill="#497d9c" d="M68.45,24.99c0-15.55,11.02-25.56,27.72-25.56,5.54,0,11.02.65,16.2,2.3v10.37h-1.37l-.86-3.46c-.86-3.6-5.69-6.19-14.04-6.19-13.18,0-19.15,9.14-19.15,21.39,0,12.96,4.82,23.69,19.3,23.69,2.09,0,4.25-.22,6.34-.72,2.52-.58,3.1-1.8,3.1-5.76v-3.02c0-6.19-1.08-6.84-4.1-7.42l-4.61-.86v-1.01h22.61v1.01l-3.24.86c-2.95.79-3.46,1.22-3.38,7.42l.07,9.58c-4.82,1.44-11.59,2.81-17.5,2.81-16.2,0-27.07-8.5-27.07-25.42h-.02Z"/>
+  <path fill="#497d9c" d="M123.02,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v11.95h25.56v-11.95c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v30.03c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42v-14.98h-25.56v14.98c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01Z"/>
+  <path fill="#497d9c" d="M189.84,48.39l3.89-.86c2.95-.65,3.38-1.22,3.38-7.42V3.75h-5.11c-8.06,0-9.79,1.37-10.37,4.1l-.86,4.32h-1.22V.79h42.48v11.38h-1.22l-.86-4.32c-.58-2.74-2.3-4.1-10.37-4.1h-5.11v36.36c0,6.19.43,6.77,3.38,7.42l3.89.86v1.01h-21.89v-1.01h-.01Z"/>
+  <path fill="#497d9c" d="M225.19,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v11.95h25.56v-11.95c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v30.03c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42v-14.98h-25.56v14.98c0,6.19.43,6.62,3.38,7.42l3.17.86v1.01h-20.45v-1.01Z"/>
+  <path fill="#497d9c" d="M283.22,25.2c0-15.99,12.6-25.78,25.06-25.78,13.39,0,25.13,7.92,25.13,25.78,0,14.69-11.52,25.35-25.13,25.35-14.69,0-25.06-8.64-25.06-25.35ZM324.98,25.2c0-16.56-8.5-22.97-16.78-22.97-7.78,0-16.63,6.05-16.63,22.97s8.21,22.47,16.71,22.47,16.71-6.12,16.71-22.47h-.01Z"/>
+  <path fill="#497d9c" d="M343.7,29.6V10.09c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.8h20.45v1.01l-3.17.86c-2.95.79-3.38,1.22-3.38,7.42v17.79c0,8.93,2.95,18.79,14.04,18.79,11.88,0,13.75-10.95,13.75-20.52v-5.98c0-15.41-.65-16.63-3.74-17.43l-3.53-.94V.79h17.71v1.01l-3.17.86c-2.81.79-3.31,2.23-3.31,13.83v9.94c0,12.6-3.89,24.12-19.66,24.12-13.03,0-19.44-8.57-19.44-20.95h0Z"/>
+  <path fill="#497d9c" d="M395.25,48.1l-1.66-10.23,1.3-.36,1.66,3.89c1.37,3.17,4.75,5.98,10.87,5.98,5.62,0,10.87-3.1,10.87-9.36,0-4.97-4.03-7.78-7.92-9.58l-4.75-2.23c-5.26-2.45-10.22-6.41-10.22-12.89,0-8.42,7.56-13.54,15.48-13.54,1.87,0,6.91.22,11.3,2.3v10.3h-1.3l-.94-3.82c-.65-2.74-3.38-5.76-9.65-5.76-4.75,0-9.15,2.88-9.15,7.92,0,4.25,4.03,6.91,8.21,8.86l4.68,2.16c5.18,2.38,10.44,6.19,10.44,13.18,0,10.37-8.78,15.63-17.71,15.63-3.67,0-8.35-.94-11.52-2.45h.01Z"/>
+  <path fill="#497d9c" d="M430.46,48.39l3.17-.86c2.95-.79,3.38-1.22,3.38-7.42V10.08c0-6.19-.43-6.62-3.38-7.42l-3.17-.86V.79h33.99v9.58h-1.15l-.86-3.24c-.72-2.66-2.3-3.38-10.37-3.38h-7.71v18.51h7.63c6.62,0,7.63-.22,8.35-2.74l.79-2.66h1.08v14.11h-1.08l-.86-3.02c-.72-2.52-1.66-2.74-8.28-2.74h-7.63v13.83c0,6.77,1.01,7.42,3.96,7.42h5.54c7.42,0,9.5-1.15,10.95-4.1l1.58-3.31,1.22.29-2.16,10.08h-35v-1.03Z"/>
+  <g>
+    <path fill="#497d9c" d="M101.62,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h12.82v.63l-1.99.54c-1.85.5-2.12.77-2.12,4.65v18.82c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63ZM111.1,90l6.64-7.54c3.88-4.42,3.52-5.55,1.4-6.09l-1.76-.45v-.63h11.06v.63l-1.99.54c-.95.27-2.71,2.3-5.37,5.33l-5.82,6.59,8.44,10.88c2.48,3.16,4.29,5.01,5.24,5.33l1.62.54v.63l-7.72.04-11.74-15.8Z"/>
+    <path fill="#497d9c" d="M132.13,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h21.31v6h-.72l-.54-2.03c-.45-1.67-1.45-2.12-6.5-2.12h-4.83v11.6h4.78c4.15,0,4.79-.13,5.24-1.71l.5-1.67h.68v8.85h-.68l-.54-1.9c-.45-1.58-1.04-1.71-5.19-1.71h-4.78v8.67c0,4.24.63,4.65,2.48,4.65h3.48c4.65,0,5.96-.72,6.86-2.57l.99-2.08.77.18-1.36,6.32h-21.94v-.65Z"/>
+    <path fill="#497d9c" d="M165.31,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-5.69c0-1.81-.09-2.12-.95-3.52l-5.96-9.62c-2.35-3.84-2.93-4.29-4.15-4.74l-1.26-.45v-.63h13.36v.63l-2.35.54c-1.94.45-2.53,1.26-.45,4.65l5.19,8.58,3.57-6.41c2.84-5.15,3.21-6.37,1.22-6.82l-2.3-.54v-.63h10.52v.63l-1.26.45c-1.76.63-2.26,1.49-4.78,5.73l-4.92,8.17c-.81,1.31-.86,1.9-.86,3.43v6.23c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63h-.02Z"/>
+    <path fill="#497d9c" d="M208.47,89.95h1.4c3.84,0,7.58-1.49,7.58-6.41,0-5.37-3.2-6.68-7.72-6.68h-2.08v23.07c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h12.46c5.19,0,11.06.95,11.06,7.45,0,4.42-3.97,6.91-8.08,7.86,2.39,2.98,5.28,6.64,7.63,9.34,2.57,2.98,3.75,4.29,4.97,4.69l1.49.5v.63l-7.54.04c-2.84-3.66-9.66-12.01-12.46-15.84h0Z"/>
+    <path fill="#497d9c" d="M230.04,105.12l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h21.31v6h-.72l-.54-2.03c-.45-1.67-1.45-2.12-6.5-2.12h-4.83v11.6h4.78c4.15,0,4.79-.13,5.24-1.71l.5-1.67h.68v8.85h-.68l-.54-1.9c-.45-1.58-1.04-1.71-5.19-1.71h-4.78v8.67c0,4.24.63,4.65,2.48,4.65h3.48c4.65,0,5.96-.72,6.86-2.57l.99-2.08.77.18-1.36,6.32h-21.94v-.65Z"/>
+    <path fill="#497d9c" d="M258.44,104.94l-1.04-6.41.81-.23,1.04,2.44c.86,1.99,2.98,3.75,6.82,3.75,3.52,0,6.82-1.94,6.82-5.87,0-3.11-2.53-4.88-4.97-6l-2.98-1.4c-3.3-1.53-6.41-4.02-6.41-8.08,0-5.28,4.74-8.49,9.71-8.49,1.17,0,4.33.14,7.09,1.45v6.46h-.81l-.59-2.39c-.41-1.72-2.12-3.61-6.05-3.61-2.98,0-5.73,1.81-5.73,4.97,0,2.66,2.53,4.33,5.15,5.55l2.93,1.35c3.25,1.49,6.55,3.88,6.55,8.26,0,6.5-5.51,9.8-11.11,9.8-2.3,0-5.24-.59-7.22-1.53v-.02Z"/>
+    <path fill="#497d9c" d="M280.92,90.58c0-10.02,7.9-16.16,15.71-16.16,8.4,0,15.76,4.97,15.76,16.16,0,9.21-7.22,15.89-15.76,15.89-9.21,0-15.71-5.42-15.71-15.89h0ZM307.1,90.58c0-10.38-5.33-14.4-10.52-14.4-4.88,0-10.43,3.79-10.43,14.4s5.15,14.08,10.47,14.08,10.47-3.84,10.47-14.08h.01Z"/>
+    <path fill="#497d9c" d="M324.84,89.95h1.4c3.84,0,7.58-1.49,7.58-6.41,0-5.37-3.2-6.68-7.72-6.68h-2.08v23.07c0,3.88.27,4.15,2.12,4.65l1.99.54v.63h-12.82v-.63l1.99-.54c1.85-.5,2.12-.77,2.12-4.65v-18.82c0-3.88-.27-4.15-2.12-4.65l-1.99-.54v-.63h12.46c5.19,0,11.06.95,11.06,7.45,0,4.42-3.97,6.91-8.08,7.86,2.39,2.98,5.28,6.64,7.63,9.34,2.57,2.98,3.75,4.29,4.97,4.69l1.49.5v.63l-7.54.04c-2.84-3.66-9.66-12.01-12.46-15.84h0Z"/>
+    <path fill="#497d9c" d="M349.84,105.12l2.44-.54c1.85-.41,2.12-.77,2.12-4.65v-22.8h-3.21c-5.06,0-6.14.86-6.5,2.57l-.54,2.71h-.77v-7.13h26.63v7.13h-.77l-.54-2.71c-.36-1.72-1.44-2.57-6.5-2.57h-3.2v22.8c0,3.88.27,4.24,2.12,4.65l2.44.54v.63h-13.72v-.63Z"/>
+    <path fill="#497d9c" d="M1.63,90.4l91.71-3.01c1.52.18,2.68,1.49,2.68,3.03s-1.16,2.84-2.68,3.03c-30.57-1.02-61.14-2.03-91.71-3.05h0Z"/>
+    <path fill="#497d9c" d="M467.61,90.45l-91.71,3.01c-1.52-.18-2.68-1.49-2.68-3.03s1.16-2.84,2.68-3.03c30.57,1.02,61.14,2.03,91.71,3.05Z"/>
+  </g>
+</svg>
+  </div>
+  <div class="foot-copy">© 2026 Lighthouse Key Resort. All rights reserved.</div>
+  <nav class="foot-nav">
+    <a href="index.html">Home</a>
+    <a href="residences.html">Residences</a>
+    <a href="location.html">Location</a>
+    <a href="index.html#contact">Enquire</a>
+  </nav>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mobMenu   = document.getElementById('mob-menu');
+const mobClose  = document.getElementById('mob-close');
+const mobBackdrop = document.getElementById('mob-backdrop');
+
+function openMenu() {
+  mobMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(() => requestAnimationFrame(() => mobMenu.classList.add('visible')));
+  hamburger.classList.add('open');
+}
+function closeMenu() {
+  mobMenu.classList.remove('visible');
+  hamburger.classList.remove('open');
+  setTimeout(() => {
+    mobMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }, 350);
+}
+hamburger.addEventListener('click', openMenu);
+mobClose.addEventListener('click', closeMenu);
+mobMenu.addEventListener('click', function(e) {
+  if (e.target === mobMenu) closeMenu();
+});
+mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+</script>
+</body>
+</html>
