@@ -134,7 +134,7 @@ Persistent reference for all AI-assisted work on this project. Read this file be
 
   <!-- Right: CTA button -->
   <div class="nav-right">
-    <a href="index.html#contact">Enquire Now</a>
+    <a href="index.html#contact">Inquire Now</a>
   </div>
 
   <!-- Hamburger (mobile only, position: fixed top: 14px right: 16px z-index: 999999) -->
@@ -154,7 +154,7 @@ Persistent reference for all AI-assisted work on this project. Read this file be
     <a href="location.html">Location</a>
     <a href="index.html#gallery">Gallery</a>
   </nav>
-  <a href="index.html#contact" class="mob-menu-enquire">Enquire Now</a>
+  <a href="index.html#contact" class="mob-menu-enquire">Inquire Now</a>
 </div>
 ```
 
