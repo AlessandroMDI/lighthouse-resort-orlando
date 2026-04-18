@@ -414,13 +414,11 @@ nav#nav.solid .nav-symbol-inner img {
   transition: color 0.3s, border-color 0.3s;
 }
 .fp-enquire:hover { color: var(--accent); border-color: var(--accent); }
-.fp-controls.fp-controls-inline { display: none !important; }
+.fp-controls.fp-controls-inline { display: flex; margin-top: 24px; }
 
 /* nav controls */
 .fp-controls {
-  display: flex; align-items: center; gap: 32px; margin-top: 48px;
-  width: calc(50% - 40px);
-  margin-left: calc(50% + 40px);
+  display: flex; align-items: center; gap: 24px; margin-top: 28px;
 }
 .fp-arrow {
   width: 52px; height: 52px;
@@ -754,7 +752,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   .fp-slide.active { display: flex; flex-direction: column; }
   .fp-image-wrap { order: 1; }
   .fp-controls:not(.fp-controls-inline) { display: none; }
-  .fp-controls.fp-controls-inline { display: flex !important; order: 2; width: 100%; margin-top: 16px; margin-bottom: 0; }
+  .fp-controls.fp-controls-inline { display: flex !important; margin-top: 16px; }
   .fp-info { order: 3; }
   .res-cta { padding: 80px 24px; }
   footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
@@ -812,7 +810,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   <div class="page-hero-bg"></div>
   <div class="page-hero-scrim"></div>
   <div class="page-hero-body">
-    <p class="page-hero-eyebrow">Lighthouse Key Resort &nbsp;·&nbsp; Orlando, Florida</p>
+    <p class="page-hero-eyebrow">Lighthouse Resort Orlando &nbsp;·&nbsp; Orlando, Florida</p>
     <h1 class="page-hero-title">The Suites & Floorplans</h1>
     <p class="page-hero-sub">Two, three and four bedroom resort residences, designed around the guest <span style="white-space:nowrap">experience&thinsp;—&thinsp;and</span> built to perform.</p>
   </div>
@@ -918,16 +916,6 @@ nav#nav.solid .hamburger span { background: var(--dark); }
           <div class="fp-image-badge">3 Bed · 3 Bath</div>
           <img src="/.netlify/images?url=/images/PLAN_A.png&w=800&q=100" alt="Unit A Floor Plan">
         </div>
-        <div class="fp-controls fp-controls-inline">
-          <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-          </button>
-          <div class="fp-dots-inline"></div>
-          <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
-        </div>
         <div class="fp-info">
           <p class="fp-plan-num">3 Bedroom · 3 Bathroom &nbsp;·&nbsp; 01 of 05</p>
           <h2 class="fp-name"><em>Unit A</em></h2>
@@ -942,7 +930,23 @@ nav#nav.solid .hamburger span { background: var(--dark); }
           </div>
           <div class="fp-price">Est. $80K–90K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
-          <a href="#" data-enquire-modal class="fp-enquire">Enquire About This Plan →</a>
+          <a href="#" data-enquire-modal class="fp-enquire">Inquire About This Plan →</a>
+          <div class="fp-controls fp-controls-inline">
+            <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="fp-dots">
+              <button class="fp-dot active" onclick="fpGo(0)"></button>
+              <button class="fp-dot" onclick="fpGo(1)"></button>
+              <button class="fp-dot" onclick="fpGo(2)"></button>
+              <button class="fp-dot" onclick="fpGo(3)"></button>
+              <button class="fp-dot" onclick="fpGo(4)"></button>
+            </div>
+            <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
+          </div>
         </div>
       </div>
 
@@ -951,16 +955,6 @@ nav#nav.solid .hamburger span { background: var(--dark); }
         <div class="fp-image-wrap">
           <div class="fp-image-badge">3 Bed · 3 Bath</div>
           <img src="/.netlify/images?url=/images/PLAN_B.png&w=800&q=100" alt="Unit B Floor Plan">
-        </div>
-        <div class="fp-controls fp-controls-inline">
-          <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-          </button>
-          <div class="fp-dots-inline"></div>
-          <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
         </div>
         <div class="fp-info">
           <p class="fp-plan-num">3 Bedroom · 3 Bathroom &nbsp;·&nbsp; 02 of 05</p>
@@ -976,7 +970,23 @@ nav#nav.solid .hamburger span { background: var(--dark); }
           </div>
           <div class="fp-price">Est. $80K–90K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
-          <a href="#" data-enquire-modal class="fp-enquire">Enquire About This Plan →</a>
+          <a href="#" data-enquire-modal class="fp-enquire">Inquire About This Plan →</a>
+          <div class="fp-controls fp-controls-inline">
+            <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="fp-dots">
+              <button class="fp-dot" onclick="fpGo(0)"></button>
+              <button class="fp-dot" onclick="fpGo(1)"></button>
+              <button class="fp-dot" onclick="fpGo(2)"></button>
+              <button class="fp-dot" onclick="fpGo(3)"></button>
+              <button class="fp-dot" onclick="fpGo(4)"></button>
+            </div>
+            <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
+          </div>
         </div>
       </div>
 
@@ -985,16 +995,6 @@ nav#nav.solid .hamburger span { background: var(--dark); }
         <div class="fp-image-wrap">
           <div class="fp-image-badge">2 Bed · 2 Bath</div>
           <img src="/.netlify/images?url=/images/PLAN_C.png&w=800&q=100" alt="Unit C Floor Plan">
-        </div>
-        <div class="fp-controls fp-controls-inline">
-          <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-          </button>
-          <div class="fp-dots-inline"></div>
-          <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
         </div>
         <div class="fp-info">
           <p class="fp-plan-num">2 Bedroom · 2 Bathroom &nbsp;·&nbsp; 03 of 05</p>
@@ -1010,7 +1010,23 @@ nav#nav.solid .hamburger span { background: var(--dark); }
           </div>
           <div class="fp-price">Est. $75K–85K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
-          <a href="#" data-enquire-modal class="fp-enquire">Enquire About This Plan →</a>
+          <a href="#" data-enquire-modal class="fp-enquire">Inquire About This Plan →</a>
+          <div class="fp-controls fp-controls-inline">
+            <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="fp-dots">
+              <button class="fp-dot" onclick="fpGo(0)"></button>
+              <button class="fp-dot" onclick="fpGo(1)"></button>
+              <button class="fp-dot" onclick="fpGo(2)"></button>
+              <button class="fp-dot" onclick="fpGo(3)"></button>
+              <button class="fp-dot" onclick="fpGo(4)"></button>
+            </div>
+            <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
+          </div>
         </div>
       </div>
 
@@ -1019,16 +1035,6 @@ nav#nav.solid .hamburger span { background: var(--dark); }
         <div class="fp-image-wrap">
           <div class="fp-image-badge">2 Bed · 2 Bath</div>
           <img src="/.netlify/images?url=/images/PLAN_D.png&w=800&q=100" alt="Unit D Floor Plan">
-        </div>
-        <div class="fp-controls fp-controls-inline">
-          <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-          </button>
-          <div class="fp-dots-inline"></div>
-          <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
         </div>
         <div class="fp-info">
           <p class="fp-plan-num">2 Bedroom · 2 Bathroom &nbsp;·&nbsp; 04 of 05</p>
@@ -1044,7 +1050,23 @@ nav#nav.solid .hamburger span { background: var(--dark); }
           </div>
           <div class="fp-price">Est. $75K–85K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
-          <a href="#" data-enquire-modal class="fp-enquire">Enquire About This Plan →</a>
+          <a href="#" data-enquire-modal class="fp-enquire">Inquire About This Plan →</a>
+          <div class="fp-controls fp-controls-inline">
+            <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="fp-dots">
+              <button class="fp-dot" onclick="fpGo(0)"></button>
+              <button class="fp-dot" onclick="fpGo(1)"></button>
+              <button class="fp-dot" onclick="fpGo(2)"></button>
+              <button class="fp-dot" onclick="fpGo(3)"></button>
+              <button class="fp-dot" onclick="fpGo(4)"></button>
+            </div>
+            <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
+          </div>
         </div>
       </div>
 
@@ -1053,16 +1075,6 @@ nav#nav.solid .hamburger span { background: var(--dark); }
         <div class="fp-image-wrap">
           <div class="fp-image-badge">2 Bed · 2 Bath</div>
           <img src="/.netlify/images?url=/images/PLAN_E.png&w=800&q=100" alt="Unit E Floor Plan">
-        </div>
-        <div class="fp-controls fp-controls-inline">
-          <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
-            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
-            <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-          </button>
-          <div class="fp-dots-inline"></div>
-          <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
         </div>
         <div class="fp-info">
           <p class="fp-plan-num">2 Bedroom · 2 Bathroom &nbsp;·&nbsp; 05 of 05</p>
@@ -1078,27 +1090,27 @@ nav#nav.solid .hamburger span { background: var(--dark); }
           </div>
           <div class="fp-price">Est. $75K–85K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
-          <a href="#" data-enquire-modal class="fp-enquire">Enquire About This Plan →</a>
+          <a href="#" data-enquire-modal class="fp-enquire">Inquire About This Plan →</a>
+          <div class="fp-controls fp-controls-inline">
+            <button class="fp-arrow" onclick="fpNav(-1)" aria-label="Previous">
+              <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="fp-arrow" onclick="fpNav(1)" aria-label="Next">
+              <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <div class="fp-dots">
+              <button class="fp-dot" onclick="fpGo(0)"></button>
+              <button class="fp-dot" onclick="fpGo(1)"></button>
+              <button class="fp-dot" onclick="fpGo(2)"></button>
+              <button class="fp-dot" onclick="fpGo(3)"></button>
+              <button class="fp-dot" onclick="fpGo(4)"></button>
+            </div>
+            <div class="fp-counter"><span class="fp-cur-inline">01</span> / 05</div>
+          </div>
         </div>
       </div>
     </div><!-- /fp-slides -->
 
-    <div class="fp-controls">
-      <button class="fp-arrow" id="fp-prev" onclick="fpNav(-1)" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="fp-arrow" id="fp-next" onclick="fpNav(1)" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-      </button>
-      <div class="fp-dots">
-        <button class="fp-dot active" onclick="fpGo(0)"></button>
-        <button class="fp-dot" onclick="fpGo(1)"></button>
-        <button class="fp-dot" onclick="fpGo(2)"></button>
-        <button class="fp-dot" onclick="fpGo(3)"></button>
-        <button class="fp-dot" onclick="fpGo(4)"></button>
-      </div>
-      <div class="fp-counter"><span id="fp-cur">01</span> / 05</div>
-    </div>
   </div>
 </section>
 
@@ -1179,12 +1191,12 @@ let fpIndex = 0;
 const fpTotal = 5;
 function fpGo(n) {
   document.getElementById('fp-' + fpIndex).classList.remove('active');
-  document.querySelectorAll('.fp-dot')[fpIndex].classList.remove('active');
   fpIndex = (n + fpTotal) % fpTotal;
   document.getElementById('fp-' + fpIndex).classList.add('active');
-  document.querySelectorAll('.fp-dot')[fpIndex].classList.add('active');
+  document.querySelectorAll('#fp-' + fpIndex + ' .fp-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === fpIndex);
+  });
   const cur = String(fpIndex + 1).padStart(2, '0');
-  document.getElementById('fp-cur').textContent = cur;
   document.querySelectorAll('.fp-cur-inline').forEach(el => el.textContent = cur);
 }
 function fpNav(dir) { fpGo(fpIndex + dir); }
