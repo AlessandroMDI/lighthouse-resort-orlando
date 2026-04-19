@@ -499,10 +499,10 @@ nav#nav.solid .nav-symbol-inner img {
 .enquire-modal-close {
   position: absolute; top: 16px; right: 20px; z-index: 2;
   background: none; border: none; font-size: 1.6rem; line-height: 1;
-  color: rgba(255,255,255,0.7); cursor: pointer; padding: 4px 8px;
+  color: rgba(11,17,31,0.5); cursor: pointer; padding: 4px 8px;
   transition: color 0.2s;
 }
-.enquire-modal-close:hover { color: var(--white); }
+.enquire-modal-close:hover { color: var(--dark); }
 .enquire-modal-left {
   background: var(--dark); padding: 72px 52px;
   display: flex; flex-direction: column; justify-content: center;
@@ -528,7 +528,7 @@ nav#nav.solid .nav-symbol-inner img {
 }
 .enquire-modal-right h3 {
   font-family: 'Playfair Display', serif; font-weight: 300;
-  font-size: 1.4rem; color: var(--dark); margin-bottom: 28px;
+  font-size: 1.4rem; color: var(--dark); margin-bottom: 28px; text-align: center;
 }
 .enquire-modal-right .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .enquire-modal-right .field { margin-bottom: 18px; }
@@ -1081,12 +1081,13 @@ nav#nav.solid .hamburger span { background: var(--dark); }
     <button class="enquire-modal-close" id="enquire-close" aria-label="Close">&#215;</button>
     <div class="enquire-modal-left">
       <p class="eyebrow">Investor Inquiries</p>
-      <h2>Reserve Your <em>Position</em></h2>
+      <h2>Reserve Your Position</h2>
       <div class="rule"></div>
-      <p>Complete the form to receive the full investment prospectus and to schedule a private briefing with our team. Founding investor units are strictly limited and allocated on a first-come, first-served basis.</p>
+      <p>Complete the form to receive the full investment prospectus. Our team will get back to you within 24 hours. 
+Founding investor units are strictly limited and allocated on a first-come, first-served basis.</p>
     </div>
     <div class="enquire-modal-right">
-      <h3>Get In Touch</h3>
+      <h3>Your Position is Waiting</h3>
       <form id="modal-contact-form">
         <div class="form-row">
           <div class="field"><label>First Name</label><input type="text" name="firstname" placeholder="First name" required></div>
