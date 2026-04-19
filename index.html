@@ -150,7 +150,7 @@ nav#nav.solid .nav-symbol-inner img {
   background: linear-gradient(to top, rgba(11,17,31,0.92) 0%, rgba(11,17,31,0.55) 35%, rgba(11,17,31,0.15) 65%, transparent 100%);
   pointer-events: none;
 }
-.hero-body { position: relative; z-index: 2; }
+.hero-body { position: relative; z-index: 2; background: rgba(0,0,0,0.35); padding: 28px 32px; border-radius: 4px; display: inline-block; align-self: flex-start; }
 .hero-tag {
   font-size: 1.24rem;
   font-weight: 400;
@@ -182,9 +182,6 @@ nav#nav.solid .nav-symbol-inner img {
   font-weight: 400;
   opacity: 0;
   animation: up 0.9s 0.8s forwards;
-  background: rgba(0,0,0,0.35);
-  padding: 14px 20px;
-  border-radius: 4px;
 }
 .hero-actions {
   display: flex; gap: 16px; margin-top: 40px;
@@ -1148,7 +1145,8 @@ nav#nav.solid .hamburger span { background: var(--dark); }
     justify-content: flex-end;
   }
   .hero-h1 { font-size: clamp(2.4rem, 10vw, 3.6rem); margin-bottom: 20px; }
-  .hero-byline { font-size: 0.97rem; max-width: 100%; }
+  .hero-byline { font-size: 0.97rem; margin-top: 14px; max-width: 100%; line-height: 1.9; }
+  .hero-tag { font-size: 0.88rem; margin-bottom: 14px; }
   .hero-actions { margin-top: 28px; gap: 12px; flex-wrap: wrap; }
   .btn-white, .btn-outline-white { padding: 12px 22px; font-size: 0.60rem; }
   .scroll-cue { bottom: 20px; right: 24px; }
