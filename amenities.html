@@ -515,11 +515,12 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   .page-hero {
     height: 100svh;
     min-height: 0;
-    padding: 80px 24px 72px;
+    padding: 80px 20px 56px;
     justify-content: flex-end;
   }
+  .page-hero-body { padding: 20px 20px; }
   .page-hero-title { font-size: clamp(2.4rem, 10vw, 3.6rem); }
-  .page-hero-sub { font-size: 0.97rem; margin-top: 14px; max-width: 100%; font-weight: 400; line-height: 1.9; }
+  .page-hero-sub { font-size: 0.97rem; margin-top: 14px; max-width: 100%; font-weight: 400; line-height: 1.7; }
   .page-hero-eyebrow { font-size: 0.88rem; margin-bottom: 14px; }
   .page-hero-scrim { background: rgba(11,17,31,0.62); }
   .amenities-intro { padding: 56px 24px; }
@@ -537,6 +538,13 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   .hamburger { display: flex; }
   .nav-logo img { height: 42px !important; }
   .nav-symbol-inner { display: none; }
+}
+@media (max-width: 430px) {
+  .page-hero { padding-bottom: 40px; }
+  .page-hero-body { padding: 16px 16px; }
+  .page-hero-title { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 14px; }
+  .page-hero-eyebrow { font-size: 0.78rem; margin-bottom: 10px; }
+  .page-hero-sub { font-size: 0.88rem; margin-top: 10px; line-height: 1.6; }
 }
 </style>
 </head>

@@ -1141,23 +1141,32 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   .hero {
     height: 100svh;
     min-height: 0;
-    padding: 80px 24px 100px;
+    padding: 80px 20px 56px;
     justify-content: flex-end;
   }
+  .hero-body { padding: 20px 20px; }
   .hero-h1 { font-size: clamp(2.4rem, 10vw, 3.6rem); margin-bottom: 20px; }
-  .hero-byline { font-size: 0.97rem; margin-top: 14px; max-width: 100%; line-height: 1.9; }
+  .hero-byline { font-size: 0.97rem; margin-top: 14px; max-width: 100%; line-height: 1.7; }
   .hero-tag { font-size: 0.88rem; margin-bottom: 14px; }
   .hero-actions { margin-top: 28px; gap: 12px; flex-wrap: wrap; }
   .btn-white, .btn-outline-white { padding: 12px 22px; font-size: 0.60rem; }
   .scroll-cue { bottom: 20px; right: 24px; }
   .hero-scrim { background: rgba(11,17,31,0.62); }
   /* Logo scaling on mobile */
+
   .nav-right { display: none; }
   .hamburger { display: flex; }
   .nav-logo img { height: 42px !important; }
   .nav-symbol-inner { display: none; }
   nav#nav { padding: 14px 20px; }
   nav#nav.solid { padding: 14px 20px; }
+}
+@media (max-width: 430px) {
+  .hero { padding-bottom: 40px; }
+  .hero-body { padding: 16px 16px; }
+  .hero-h1 { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 14px; }
+  .hero-tag { font-size: 0.78rem; margin-bottom: 10px; }
+  .hero-actions { margin-top: 20px; }
 }
 </style>
 </head>
