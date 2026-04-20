@@ -40,7 +40,7 @@ Read before editing. All numbers are placeholders unless confirmed otherwise.
    - No `fit=cover`. Width: `2000` hero, `900` large, `800` standard, `700` grid.
    - `q=100` required — lower quality looks degraded on Netlify live.
 
-3. **location.html images use direct `images/filename` paths** — no Netlify CDN. Keep consistent.
+3. **All pages use Netlify Image CDN** — including location.html. No direct `images/` paths for raster images.
 
 4. **Read file before editing, grep-verify after.** Use the Edit tool over Bash for HTML changes.
 
@@ -59,4 +59,4 @@ Read before editing. All numbers are placeholders unless confirmed otherwise.
 
 ## Images
 
-**Netlify CDN** (index + residences): standard `/.netlify/images?url=` format.
+**Netlify CDN** (all pages): standard `/.netlify/images?url=` format.
