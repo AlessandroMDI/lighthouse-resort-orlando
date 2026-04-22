@@ -9,7 +9,7 @@ Read before editing. All numbers are placeholders unless confirmed otherwise.
 - **Site:** Presale investor microsite — 4 flat HTML files, Netlify Drop deployment
 - **Domain:** lighthouse-key.com | **Copyright:** © 2026 LightHouse Resort - Orlando
 - **Tone:** Premium, calm, internationally refined. Audience: HNW investors.
-- **Pages:** `index.html` · `residences.html` · `amenities.html` · `location.html`
+- **Pages:** `index.html` · `suites_floorplans.html` · `amenities.html` · `location.html`
 
 ---
 
