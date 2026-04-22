@@ -36,9 +36,10 @@ Read before editing. All numbers are placeholders unless confirmed otherwise.
 
 1. **Nav CSS must use `nav#nav {}`, never `nav {}`** — prevents `<nav class="foot-nav">` inheriting `position: fixed`.
 
-2. **Netlify Image CDN format:** `/.netlify/images?url=/images/FILENAME&w=WIDTH&q=100`
+2. **Netlify Image CDN format:** `src="/.netlify/images?url=/images/FILENAME&w=WIDTH&q=85" srcset="...&w=WIDTH&q=85 1x, ...&w=2xWIDTH&q=85 2x"`
    - No `fit=cover`. Width: `2000` hero, `900` large, `800` standard, `700` grid.
-   - `q=100` required — lower quality looks degraded on Netlify live.
+   - Always include `srcset` with 2× width for retina support. Use `q=85`.
+   - CSS `background-image`: use double width (e.g. `w=4000` for hero), `q=85`, no srcset.
 
 3. **All pages use Netlify Image CDN** — including location.html. No direct `images/` paths for raster images.
 
