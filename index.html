@@ -1110,7 +1110,12 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   .intro-pillars{grid-template-columns:1fr; gap:32px 0; margin-top:0;}
   .investment{padding:80px 24px;}
   .investment-layout{grid-template-columns:1fr; gap:48px;}
-  .residences,.units-section,.gallery-section,.quote-section,.team-section,.tech-section{padding:80px 24px;}
+  .residences,.units-section,.quote-section,.team-section,.tech-section{padding:80px 24px;}
+  .gallery-section{padding:20px;}
+  .gallery-header{padding:0; margin-bottom:24px;}
+  .tech-section .section-header{text-align:left;}
+  .tech-section .section-header .rule{margin-left:0;}
+  .tech-section .section-header h2,.tech-section .section-header p{margin-left:0; margin-right:0;}
   .tech-grid{grid-template-columns:1fr;}
   .team-grid{grid-template-columns:1fr;gap:28px;}
   .shawmut-row{grid-template-columns:1fr;gap:20px;}
@@ -1133,7 +1138,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   .fp-controls:not(.fp-controls-inline) { display: none; }
   .fp-controls.fp-controls-inline { display: flex !important; margin-top: 16px; }
   .fp-info { order: 3; }
-  .gallery-slideshow { aspect-ratio: 16 / 9; }
+  .gallery-slideshow { aspect-ratio: 4 / 3; margin: 0; }
   .floorplans-section{padding:80px 24px;}
   .fp-slide.active{grid-template-columns:1fr; gap:32px;}
   .fp-image-wrap{aspect-ratio:unset; padding:12px; width:100%;}
@@ -1248,7 +1253,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   <div class="intro-pillars">
     <div class="intro-pillar reveal">
       <h3 class="intro-pillar-title">Proximity to Disney</h3>
-      <p class="intro-pillar-body">3.5 miles from Walt Disney World — the world’s single largest tourism demand generator with 50M+ annual visitors.</p>
+      <p class="intro-pillar-body">3.5 miles from Walt Disney World, the world’s single largest tourism demand generator with 50M+ annual visitors.</p>
     </div>
     <div class="intro-pillar reveal d1">
       <h3 class="intro-pillar-title">Lakeside Setting</h3>
@@ -1270,7 +1275,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
       <h2>The proof of concept is already operating.</h2>
       <div class="existing-body">
         <p>Most developments, at this stage, only have projections. The LightHouse Resort already has proven operating results. The Berkley Orlando, the existing, on-site resort, is currently operating at 91% occupancy and holds the #1 ranking on TripAdvisor for the area.</p>
-        <p>The Berkley Orlando consists of two buildings, totalling 80 units, plus a dedicated amenity building housing the pool, fitness centre, private movie theatre, arcade, and guest facilities. All three buildings are structurally sound, full concrete construction, only requiring cosmetic renovations — no structural remediation, no infrastructure rebuild.</p>
+        <p>The Berkley Orlando consists of two buildings, totalling 80 units, plus a dedicated amenity building housing the pool, fitness centre, private movie theatre, arcade, and guest facilities. All three buildings are structurally sound, full concrete construction, only requiring cosmetic renovations, with no structural remediation and no infrastructure rebuild.</p>
         <p>The existing resort will be cosmetically renovated and fully integrated into the LightHouse Resort brand. The new development launches with 80 proven units, an active guest base, and an existing amenity footprint already generating revenue.</p>
       </div>
     </div>
@@ -1359,7 +1364,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
             <div class="fp-spec"><div class="fp-spec-val">1,398</div><div class="fp-spec-key">Interior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">144</div><div class="fp-spec-key">Exterior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">1,542</div><div class="fp-spec-key">Total Sq Ft</div></div>
-            <div class="fp-spec"><div class="fp-spec-val">10</div><div class="fp-spec-key">Can Accomodate</div></div>
+            <div class="fp-spec"><div class="fp-spec-val">10</div><div class="fp-spec-key">Can Accommodate</div></div>
           </div>
           <div class="fp-price">Est. $90K–95K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
@@ -1389,7 +1394,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
             <div class="fp-spec"><div class="fp-spec-val">1,271</div><div class="fp-spec-key">Interior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">144</div><div class="fp-spec-key">Exterior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">1,415</div><div class="fp-spec-key">Total Sq Ft</div></div>
-            <div class="fp-spec"><div class="fp-spec-val">10</div><div class="fp-spec-key">Can Accomodate</div></div>
+            <div class="fp-spec"><div class="fp-spec-val">10</div><div class="fp-spec-key">Can Accommodate</div></div>
           </div>
           <div class="fp-price">Est. $90K–95K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
@@ -1419,7 +1424,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
             <div class="fp-spec"><div class="fp-spec-val">1,222</div><div class="fp-spec-key">Interior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">96</div><div class="fp-spec-key">Exterior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">1,318</div><div class="fp-spec-key">Total Sq Ft</div></div>
-            <div class="fp-spec"><div class="fp-spec-val">8</div><div class="fp-spec-key">Can Accomodate</div></div>
+            <div class="fp-spec"><div class="fp-spec-val">8</div><div class="fp-spec-key">Can Accommodate</div></div>
           </div>
           <div class="fp-price">Est. $70K–75K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
@@ -1449,7 +1454,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
             <div class="fp-spec"><div class="fp-spec-val">922</div><div class="fp-spec-key">Interior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">96</div><div class="fp-spec-key">Exterior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">1,018</div><div class="fp-spec-key">Total Sq Ft</div></div>
-            <div class="fp-spec"><div class="fp-spec-val">6</div><div class="fp-spec-key">Can Accomodate</div></div>
+            <div class="fp-spec"><div class="fp-spec-val">6</div><div class="fp-spec-key">Can Accommodate</div></div>
           </div>
           <div class="fp-price">Est. $70K–75K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
@@ -1479,7 +1484,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
             <div class="fp-spec"><div class="fp-spec-val">1,148</div><div class="fp-spec-key">Interior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">114</div><div class="fp-spec-key">Exterior Sq Ft</div></div>
             <div class="fp-spec"><div class="fp-spec-val">1,262</div><div class="fp-spec-key">Total Sq Ft</div></div>
-            <div class="fp-spec"><div class="fp-spec-val">8</div><div class="fp-spec-key">Can Accomodate</div></div>
+            <div class="fp-spec"><div class="fp-spec-val">8</div><div class="fp-spec-key">Can Accommodate</div></div>
           </div>
           <div class="fp-price">Est. $70K–75K / yr</div>
           <div class="fp-price-note">Projected annual rental revenue</div>
@@ -1498,7 +1503,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
 <!-- FULL BLEED -->
 <div class="full-bleed">
   <img src="/.netlify/images?url=/images/GALERY_03.webp&w=2000&q=85" srcset="/.netlify/images?url=/images/GALERY_03.webp&w=2000&q=85 1x, /.netlify/images?url=/images/GALERY_03.webp&w=4000&q=85 2x" alt="LightHouse Resort - Orlando">
-  <div class="full-bleed-caption">LightHouse Resort - Orlando — Orlando, Florida</div>
+  <div class="full-bleed-caption">LightHouse Resort - Orlando, Orlando, Florida</div>
 </div>
 
 <!-- INVESTMENT -->
@@ -1536,8 +1541,8 @@ nav#nav.solid .hamburger span { background: var(--dark); }
       <p class="intro-eyebrow" style="margin-bottom:18px;">Why Pre-Sale</p>
       <h3 style="font-family:'Playfair Display',serif;font-weight:300;font-size:1.8rem;color:var(--dark);line-height:1.3;margin-bottom:20px;">Enter <em>before</em> the market catches up</h3>
       <div class="rule"></div>
-      <p style="font-size:1.2rem;line-height:2;color:var(--mid-gray);margin-bottom:24px;">Founding investors access units at pre-construction <span style="white-space:nowrap">pricing&thinsp;—&thinsp;before</span> any booking platform listing, before any marketing launch. Comparable completed resorts in the Disney corridor have appreciated 15–25% between pre-sale and stabilized operation.</p>
-      <p style="font-size:1.2rem;line-height:2;color:var(--mid-gray);margin-bottom:24px;">The integrated property management team handles every aspect of <span style="white-space:nowrap">operations&thinsp;—&thinsp;bookings,</span> cleaning, maintenance, and guest relations. Investors receive net income statements monthly with access to live performance dashboards.</p>
+      <p style="font-size:1.2rem;line-height:2;color:var(--mid-gray);margin-bottom:24px;">Founding investors access units at pre-construction pricing, before any booking platform listing, before any marketing launch. Comparable completed resorts in the Disney corridor have appreciated 15–25% between pre-sale and stabilized operation.</p>
+      <p style="font-size:1.2rem;line-height:2;color:var(--mid-gray);margin-bottom:24px;">The integrated property management team handles every aspect of operations: bookings, cleaning, maintenance, and guest relations. Investors receive net income statements monthly with access to live performance dashboards.</p>
       <p style="font-size:1.2rem;line-height:2;color:var(--mid-gray);">Pre-sale interest is non-binding. Our investment team is available for private briefings with detailed financial modelling for any prospective investor.</p>
       <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;margin-top:36px;font-size:0.77rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--dark);text-decoration:none;border-bottom:1px solid var(--warm-gray);padding-bottom:4px;transition:color 0.3s,border-color 0.3s;" onmouseover="this.style.color='#497d9c';this.style.borderColor='#497d9c'" onmouseout="this.style.color='var(--dark)';this.style.borderColor='var(--warm-gray)'">Request a Private Briefing &nbsp;→</a>
     </div>
@@ -1586,7 +1591,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
         <div class="loc-dist">19 min</div>
         <div>
           <div class="loc-name">Downtown Celebration, FL</div>
-          <div class="loc-sub">Disney's charming master-planned town — dining, shops, and waterfront walks.</div>
+          <div class="loc-sub">Disney's charming master-planned town, with dining, shops, and waterfront walks.</div>
         </div>
       </div>
       <div class="loc-item">
@@ -1613,7 +1618,7 @@ nav#nav.solid .hamburger span { background: var(--dark); }
     <p class="eyebrow">The Team</p>
     <div class="rule"></div>
     <h2>Decades of Experience. <em>Engineered for Precision Delivery.</em></h2>
-    <p>The Lighthouse Key team brings together over $1 billion in completed real estate transactions, a nationally ranked general contractor, and a construction methodology built on advanced 5D BIM technology — delivering complex, large-scale hospitality developments on schedule, on budget, and to institutional quality standards.</p>
+    <p>The Lighthouse Key team brings together over $1 billion in completed real estate transactions, a nationally ranked general contractor, and a construction methodology built on advanced 5D BIM technology, delivering complex, large-scale hospitality developments on schedule, on budget, and to institutional quality standards.</p>
   </div>
 
   <div class="team-grid">
