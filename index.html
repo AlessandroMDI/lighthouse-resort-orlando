@@ -1877,7 +1877,15 @@ function fpNav(dir) { fpGo(fpIndex + dir); }
     gsThumbEls[gsIndex].classList.add('active');
     counter.textContent = (gsIndex + 1) + ' / ' + gsSlides.length;
     if (gsUserInteracted) {
-      gsThumbEls[gsIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      const container = document.getElementById('gs-thumbnails');
+      const thumb = gsThumbEls[gsIndex];
+      const thumbLeft = thumb.offsetLeft;
+      const thumbRight = thumbLeft + thumb.offsetWidth;
+      const containerLeft = container.scrollLeft;
+      const containerRight = containerLeft + container.offsetWidth;
+      if (thumbLeft < containerLeft || thumbRight > containerRight) {
+        container.scrollLeft = thumbLeft - container.offsetWidth / 2 + thumb.offsetWidth / 2;
+      }
     }
   }
   function gsReset() {
