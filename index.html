@@ -692,9 +692,11 @@ nav#nav.solid .nav-symbol-inner img {
 /* ─── GALLERY ─── */
 .gallery-section { padding: 120px 0 0; background: var(--white); }
 .gallery-header { padding: 0 56px; margin-bottom: 56px; }
+.gallery-wrap {
+  margin: 0 clamp(16px, 8vw, 100px) clamp(16px, 8vw, 100px);
+}
 .gallery-slideshow {
   position: relative;
-  margin: 0 clamp(16px, 8vw, 100px) clamp(16px, 8vw, 100px);
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--stone);
@@ -715,17 +717,52 @@ nav#nav.solid .nav-symbol-inner img {
   padding: 4px 10px;
   border-radius: 3px;
 }
-.gs-dots {
-  position: absolute; bottom: 24px; right: 28px;
-  display: flex; gap: 10px; align-items: center;
+.gs-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px;
+  background: rgba(11,17,31,0.5); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10; transition: background 0.2s;
 }
-.gs-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: rgba(255,255,255,0.35);
-  border: none; padding: 0; cursor: pointer;
-  transition: background 0.3s;
+.gs-arrow:hover { background: rgba(11,17,31,0.85); }
+.gs-arrow-prev { left: 16px; }
+.gs-arrow-next { right: 16px; }
+.gs-arrow svg { width: 20px; height: 20px; stroke: var(--white); fill: none; stroke-width: 1.8; }
+.gs-counter {
+  position: absolute; bottom: 16px; right: 16px;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--white); background: rgba(11,17,31,0.55);
+  padding: 4px 10px;
 }
-.gs-dot.active { background: rgba(255,255,255,0.95); }
+.gs-thumbnails {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--warm-gray) var(--stone);
+}
+.gs-thumbnails::-webkit-scrollbar { height: 4px; }
+.gs-thumbnails::-webkit-scrollbar-track { background: var(--stone); }
+.gs-thumbnails::-webkit-scrollbar-thumb { background: var(--warm-gray); }
+.gs-thumb {
+  flex: 0 0 calc((100% - 64px) / 9);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.2s, opacity 0.2s;
+  opacity: 0.55;
+}
+.gs-thumb.active { border-color: var(--accent); opacity: 1; }
+.gs-thumb:hover { opacity: 0.85; }
+.gs-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gs-dots { display: none; }
+@media(max-width:900px){
+  .gallery-wrap { margin: 0; }
+  .gs-thumb { flex: 0 0 calc((100% - 24px) / 4); }
+  .gs-arrow { width: 36px; height: 36px; }
+}
 
 /* ─── FLOOR PLANS ─── */
 .floorplans-section { padding: 120px 56px; background: var(--off-white); }
@@ -1712,9 +1749,19 @@ nav#nav.solid .hamburger span { background: var(--dark); }
     <p class="intro-eyebrow" style="margin-bottom:14px;">The Experience</p>
     <h2 style="font-family:'Playfair Display',serif;font-weight:300;font-size:clamp(2rem,3.2vw,2.8rem);color:var(--dark);">The Lighthouse Resort - Orlando</h2>
   </div>
-  <div class="gallery-slideshow" id="gs-slideshow">
-    <!-- slides injected by JS -->
-    <div class="gs-dots" id="gs-dots-container"></div>
+  <div class="gallery-wrap">
+    <div class="gallery-slideshow" id="gs-slideshow">
+      <!-- slides injected by JS -->
+      <button class="gs-arrow gs-arrow-prev" id="gs-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="gs-arrow gs-arrow-next" id="gs-next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+      <div class="gs-counter" id="gs-counter"></div>
+      <div class="gs-dots" id="gs-dots-container"></div>
+    </div>
+    <div class="gs-thumbnails" id="gs-thumbnails"></div>
   </div>
 </section>
 
@@ -1811,20 +1858,26 @@ function fpNav(dir) { fpGo(fpIndex + dir); }
 (function () {
   const slideshow = document.getElementById('gs-slideshow');
   const dotsContainer = document.getElementById('gs-dots-container');
-  let gsIndex = 0, gsSlides = [], gsDotEls = [], gsTimer = null;
+  const thumbsContainer = document.getElementById('gs-thumbnails');
+  const counter = document.getElementById('gs-counter');
+  let gsIndex = 0, gsSlides = [], gsThumbEls = [], gsTimer = null;
 
   function gsGoTo(n) {
     gsSlides[gsIndex].classList.remove('active');
-    gsDotEls[gsIndex].classList.remove('active');
+    gsThumbEls[gsIndex].classList.remove('active');
     gsIndex = (n + gsSlides.length) % gsSlides.length;
     gsSlides[gsIndex].classList.add('active');
-    gsDotEls[gsIndex].classList.add('active');
+    gsThumbEls[gsIndex].classList.add('active');
+    counter.textContent = (gsIndex + 1) + ' / ' + gsSlides.length;
+    gsThumbEls[gsIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
   }
   function gsReset() {
     clearInterval(gsTimer);
     gsTimer = setInterval(function () { gsGoTo(gsIndex + 1); }, 5000);
   }
-  window.gsDot = function (n) { gsGoTo(n); gsReset(); };
+
+  document.getElementById('gs-prev').addEventListener('click', function () { gsGoTo(gsIndex - 1); gsReset(); });
+  document.getElementById('gs-next').addEventListener('click', function () { gsGoTo(gsIndex + 1); gsReset(); });
 
   function shuffle(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
@@ -1839,6 +1892,8 @@ function fpNav(dir) { fpGo(fpIndex + dir); }
     shuffle(filenames);
     filenames.forEach(function (filename, i) {
       const cdnBase = '/.netlify/images?url=/images/gallery/' + encodeURIComponent(filename);
+
+      // Main slide
       const slide = document.createElement('div');
       slide.className = 'gs-slide' + (i === 0 ? ' active' : '');
       const img = document.createElement('img');
@@ -1846,21 +1901,26 @@ function fpNav(dir) { fpGo(fpIndex + dir); }
       img.srcset  = cdnBase + '&w=2400&q=100 1x, ' + cdnBase + '&w=4800&q=100 2x';
       img.alt     = '';
       img.loading = i === 0 ? 'eager' : 'lazy';
-      const label = filename.replace(/\.[^.]+$/, '').replace(/\s*\(\d+\)\s*$/, '').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
-      const labelEl = document.createElement('div');
-      labelEl.className = 'g-label';
-      labelEl.textContent = label;
       slide.appendChild(img);
-      slide.appendChild(labelEl);
       slideshow.insertBefore(slide, dotsContainer);
       gsSlides.push(slide);
 
-      const dot = document.createElement('button');
-      dot.className = 'gs-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('onclick', 'gsDot(' + i + ')');
-      dotsContainer.appendChild(dot);
-      gsDotEls.push(dot);
+      // Thumbnail
+      const thumb = document.createElement('div');
+      thumb.className = 'gs-thumb' + (i === 0 ? ' active' : '');
+      const tImg = document.createElement('img');
+      tImg.src     = cdnBase + '&w=300&q=70';
+      tImg.alt     = '';
+      tImg.loading = 'lazy';
+      thumb.appendChild(tImg);
+      thumb.addEventListener('click', (function(idx) {
+        return function () { gsGoTo(idx); gsReset(); };
+      }(i)));
+      thumbsContainer.appendChild(thumb);
+      gsThumbEls.push(thumb);
     });
+
+    counter.textContent = '1 / ' + gsSlides.length;
     gsTimer = setInterval(function () { gsGoTo(gsIndex + 1); }, 5000);
   }
 
