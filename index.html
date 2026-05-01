@@ -717,17 +717,21 @@ nav#nav.solid .nav-symbol-inner img {
   padding: 4px 10px;
   border-radius: 3px;
 }
-.gs-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 48px; height: 48px;
-  background: rgba(11,17,31,0.5); border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  z-index: 10; transition: background 0.2s;
+.gs-thumb-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
 }
-.gs-arrow:hover { background: rgba(11,17,31,0.85); }
-.gs-arrow-prev { left: 16px; }
-.gs-arrow-next { right: 16px; }
-.gs-arrow svg { width: 20px; height: 20px; stroke: var(--white); fill: none; stroke-width: 1.8; }
+.gs-arrow {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  background: var(--dark); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+}
+.gs-arrow:hover { background: var(--accent); }
+.gs-arrow svg { width: 16px; height: 16px; stroke: var(--white); fill: none; stroke-width: 1.8; }
 .gs-counter {
   position: absolute; bottom: 16px; right: 16px;
   font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
@@ -737,10 +741,11 @@ nav#nav.solid .nav-symbol-inner img {
 .gs-thumbnails {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
+  flex: 1;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--warm-gray) var(--stone);
+}
 }
 .gs-thumbnails::-webkit-scrollbar { height: 4px; }
 .gs-thumbnails::-webkit-scrollbar-track { background: var(--stone); }
@@ -761,7 +766,6 @@ nav#nav.solid .nav-symbol-inner img {
 @media(max-width:900px){
   .gallery-wrap { margin: 0; }
   .gs-thumb { flex: 0 0 calc((100% - 24px) / 4); }
-  .gs-arrow { width: 36px; height: 36px; }
 }
 
 /* ─── FLOOR PLANS ─── */
@@ -1752,16 +1756,18 @@ nav#nav.solid .hamburger span { background: var(--dark); }
   <div class="gallery-wrap">
     <div class="gallery-slideshow" id="gs-slideshow">
       <!-- slides injected by JS -->
-      <button class="gs-arrow gs-arrow-prev" id="gs-prev" aria-label="Previous">
-        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button class="gs-arrow gs-arrow-next" id="gs-next" aria-label="Next">
-        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-      </button>
       <div class="gs-counter" id="gs-counter"></div>
       <div class="gs-dots" id="gs-dots-container"></div>
     </div>
-    <div class="gs-thumbnails" id="gs-thumbnails"></div>
+    <div class="gs-thumb-row">
+      <button class="gs-arrow gs-arrow-prev" id="gs-prev" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="gs-thumbnails" id="gs-thumbnails"></div>
+      <button class="gs-arrow gs-arrow-next" id="gs-next" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+    </div>
   </div>
 </section>
 
